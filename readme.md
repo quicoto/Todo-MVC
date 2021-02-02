@@ -1,29 +1,43 @@
-# Vue.js TodoMVC Example
+# Vanilla ES6 (ES2015) • [TodoMVC](http://todomvc.com)
 
-> Vue.js is a library for building interactive web interfaces.
-It provides data-driven, nestable view components with a simple and flexible API.
+> A port of the [Vanilla JS Example](http://todomvc.com/examples/vanillajs/), but translated into ES6, also known as ES2015.
 
-> _[Vue.js - vuejs.org](http://vuejs.org)_
+## Learning ES6
 
-## Learning Vue.js
+- [ES6 Features](https://github.com/lukehoban/es6features)
+- [Learning Resources](https://github.com/ericdouglas/ES6-Learning)
+- [Babel's ES6 Guide](https://babeljs.io/docs/learn-es2015/)
+- [Babel Compiler](https://babeljs.io/)
 
-The [Vue.js website](http://vuejs.org/) is a great resource to get started.
+## Installation
 
-Here are some links you may find helpful:
+To get started with this example, navigate into the example folder and install the NPM modules.
+```bash
+cd todomvc/examples/vanilla-es6
+npm install
+```
 
-* [Official Guide](http://vuejs.org/guide/)
-* [API Reference](http://vuejs.org/api/)
-* [Examples](http://vuejs.org/examples/)
-* [Building Larger Apps with Vue.js](http://v1.vuejs.org/guide/application.html)
+## Compiling ES6 to ES5
 
-Get help from other Vue.js users:
+After NPM modules have been installed, use the pre-defined Babel script to convert the `src` files. Browserify is also used so that `module.exports` and `require()` can be run in your browser.
 
-* [Vue.js on Twitter](https://twitter.com/vuejs)
-* [Vue.js on Gitter](https://gitter.im/vuejs/vue)
-* [Vue.js Forum](http://forum.vuejs.org)
+```bash
+npm run compile
+```
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+## Support
+
+- [Twitter](http://twitter.com/lukeed05)
+
+*Let us [know](https://github.com/tastejs/todomvc/issues) if you discover anything worth sharing.*
+
+
+## Implementation
+
+Uses [Google Closure Compiler](https://developers.google.com/closure/compiler/) to compile ES6 code to ES5, which is then readable by all browsers.
+
 
 ## Credit
 
-This TodoMVC application was created by [Evan You](http://evanyou.me).
+Created by [Luke Edwards](http://www.lukeed.com)
+Refactored by [Aaron Muir Hamilton](https://github.com/xorgy)
