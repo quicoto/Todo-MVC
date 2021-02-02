@@ -1,24 +1,20 @@
-/*global app, Router */
+/* global app, Router */
 
 (function (app, Router) {
+  const router = new Router();
 
-	'use strict';
+  ['all', 'active', 'completed'].forEach((visibility) => {
+    router.on(visibility, () => {
+      app.visibility = visibility;
+    });
+  });
 
-	var router = new Router();
+  router.configure({
+    notfound() {
+      window.location.hash = '';
+      app.visibility = 'all';
+    },
+  });
 
-	['all', 'active', 'completed'].forEach(function (visibility) {
-		router.on(visibility, function () {
-			app.visibility = visibility;
-		});
-	});
-
-	router.configure({
-		notfound: function () {
-			window.location.hash = '';
-			app.visibility = 'all';
-		}
-	});
-
-	router.init();
-
-})(app, Router);
+  router.init();
+}(app, Router));

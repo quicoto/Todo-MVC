@@ -15,5 +15,7 @@ module.exports = {
     'vue',
   ],
   rules: {
+    'no-param-reassign': 'off',
+    'func-names': 'off',
   },
 };
