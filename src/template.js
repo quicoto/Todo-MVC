@@ -1,9 +1,9 @@
-import {ItemList} from './item';
+import { ItemList } from './item';
 
-import {escapeForHTML} from './helpers';
+import { escapeForHTML } from './helpers';
 
 export default class Template {
-	/**
+  /**
 	 * Format the contents of a todo list.
 	 *
 	 * @param {ItemList} items Object containing keys you want to find in the template to replace.
@@ -16,8 +16,8 @@ export default class Template {
 	 *	completed: false,
 	 * })
 	 */
-	itemList(items) {
-		return items.reduce((a, item) => a + `
+  itemList(items) {
+    return items.reduce((a, item) => `${a}
 <li data-id="${item.id}"${item.completed ? ' class="completed"' : ''}>
 	<div class="view">
 		<input class="toggle" type="checkbox" ${item.completed ? 'checked' : ''}>
@@ -25,16 +25,16 @@ export default class Template {
 		<button class="destroy"></button>
 	</div>
 </li>`, '');
-	}
+  }
 
-	/**
+  /**
 	 * Format the contents of an "items left" indicator.
 	 *
 	 * @param {number} activeTodos Number of active todos
 	 *
 	 * @returns {!string} Contents for an "items left" indicator
 	 */
-	itemCounter(activeTodos) {
-		return `${activeTodos} item${activeTodos !== 1 ? 's' : ''} left`;
-	}
+  itemCounter(activeTodos) {
+    return `${activeTodos} item${activeTodos !== 1 ? 's' : ''} left`;
+  }
 }
