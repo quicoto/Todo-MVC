@@ -16,7 +16,6 @@ export default class View {
     this.$todoItemCounter = qs('.todo-count');
     this.$clearCompleted = qs('.clear-completed');
     this.$main = qs('.main');
-    this.$toggleAll = qs('.toggle-all');
     this.$newTodo = qs('.new-todo');
     $delegate(this.$todoList, 'li label', 'dblclick', ({ target }) => {
       this.editItem(target);
@@ -91,15 +90,6 @@ export default class View {
   }
 
   /**
-	 * Set the checked state of the Complete All checkbox.
-	 *
-	 * @param {boolean|number} checked The desired checked state
-	 */
-  setCompleteAllCheckbox(checked) {
-    this.$toggleAll.checked = !!checked;
-  }
-
-  /**
 	 * Change the appearance of the filter buttons based on the route.
 	 *
 	 * @param {string} route The current route
@@ -169,15 +159,6 @@ export default class View {
 	 */
   bindRemoveCompleted(handler) {
     $on(this.$clearCompleted, 'click', handler);
-  }
-
-  /**
-	 * @param {Function} handler Function called on synthetic event.
-	 */
-  bindToggleAll(handler) {
-    $on(this.$toggleAll, 'click', ({ target }) => {
-      handler(target.checked);
-    });
   }
 
   /**

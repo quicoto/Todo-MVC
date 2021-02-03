@@ -20,7 +20,6 @@ export default class Controller {
       this._filter();
     });
     view.bindRemoveCompleted(this.removeCompletedItems.bind(this));
-    view.bindToggleAll(this.toggleAll.bind(this));
 
     this._activeRoute = '';
     this._lastActiveRoute = null;
@@ -150,8 +149,6 @@ export default class Controller {
     this.store.count((total, active, completed) => {
       this.view.setItemsLeft(active);
       this.view.setClearCompletedButtonVisibility(completed);
-
-      this.view.setCompleteAllCheckbox(completed === total);
       this.view.setMainVisibility(total);
     });
 
