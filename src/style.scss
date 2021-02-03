@@ -1,3 +1,5 @@
+$primary: #27ae60;
+
 html,
 body {
 	margin: 0;
@@ -74,7 +76,7 @@ body {
 	font-size: 80px;
 	font-weight: 200;
 	text-align: center;
-	color: #b83f45;
+	color: $primary;
 	-webkit-text-rendering: optimizeLegibility;
 	-moz-text-rendering: optimizeLegibility;
 	text-rendering: optimizeLegibility;
@@ -155,6 +157,9 @@ body {
   border-bottom: 1px solid #ededed;
 
   time {
+		background-color: $primary;
+		color: white;
+		font-weight: 400;
     display: block;
     padding: 16px 16px 16px 60px;
   }
@@ -186,6 +191,7 @@ body {
 	/* auto, since non-WebKit browsers doesn't support input styling */
 	height: auto;
 	position: absolute;
+	top: 0;
 	bottom: 0;
 	margin: auto 0;
 	border: none; /* Mobile Safari */

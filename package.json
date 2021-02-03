@@ -1,6 +1,6 @@
 {
   "name": "todo-mvc",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "> Vue.js is a library for building interactive web interfaces. It provides data-driven, nestable view components with a simple and flexible API.",
   "scripts": {
     "build": "run-s css:* js copy",
