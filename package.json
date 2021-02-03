@@ -4,13 +4,13 @@
   "description": "> Vue.js is a library for building interactive web interfaces. It provides data-driven, nestable view components with a simple and flexible API.",
   "scripts": {
     "build": "run-s css:* js copy",
-    "copy": "copyfiles index.html dist",
+    "copy": "copyfiles assets/* index.html dist",
     "js": "webpack",
     "css:precompile": "node-sass --omitSourceMapUrl true ./src/style.scss ./dist/style.css",
     "css:minify": "cleancss -o ./dist/style.css ./dist/style.css",
     "lint": "eslint src/*.js --fix",
-    "serve": "browser-sync start --server --files dist/*.js dist/*.css *.html",
-    "watch": "NODE_ENV=development onchange 'src/*.js' 'src/*.scss' -- npm run build"
+    "serve": "run-s build && browser-sync start --serveStatic ./dist --server --files dist/*.js dist/*.css *.html",
+    "watch": "NODE_ENV=development run-s build && onchange 'src/*.js' 'src/*.scss' -- npm run build"
   },
   "repository": {
     "type": "git",
