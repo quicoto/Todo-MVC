@@ -47,6 +47,7 @@ export default class Controller {
     this.store.insert({
       id: Date.now(),
       title,
+      date: Date.now(),
       completed: false,
     }, () => {
       this.view.clearNewTodo();

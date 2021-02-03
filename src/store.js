@@ -1,35 +1,41 @@
 import {
-  Item, ItemList, ItemQuery, ItemUpdate, emptyItemQuery,
+  Item,
+  ItemList,
+  ItemQuery,
+  ItemUpdate,
+  emptyItemQuery,
 } from './item';
 
 export default class Store {
   /**
-	 * @param {!string} name Database name
-	 * @param {function()} [callback] Called when the Store is ready
-	 */
+   * @param {!string} name Database name
+   * @param {function()} [callback] Called when the Store is ready
+   */
   constructor(name, callback) {
     /**
-		 * @type {Storage}
-		 */
-    const { localStorage } = window;
+     * @type {Storage}
+     */
+    const {
+      localStorage,
+    } = window;
 
     /**
-		 * @type {ItemList}
-		 */
+     * @type {ItemList}
+     */
     let liveTodos;
 
     /**
-		 * Read the local ItemList from localStorage.
-		 *
-		 * @returns {ItemList} Current array of todos
-		 */
+     * Read the local ItemList from localStorage.
+     *
+     * @returns {ItemList} Current array of todos
+     */
     this.getLocalStorage = () => liveTodos || JSON.parse(localStorage.getItem(name) || '[]');
 
     /**
-		 * Write the local ItemList to localStorage.
-		 *
-		 * @param {ItemList} todos Array of todos to write
-		 */
+     * Write the local ItemList to localStorage.
+     *
+     * @param {ItemList} todos Array of todos to write
+     */
     this.setLocalStorage = (todos) => {
       localStorage.setItem(name, JSON.stringify(liveTodos = todos));
     };
@@ -40,16 +46,16 @@ export default class Store {
   }
 
   /**
-	 * Find items with properties matching those on query.
-	 *
-	 * @param {ItemQuery} query Query to match
-	 * @param {function(ItemList)} callback Called when the query is done
-	 *
-	 * @example
-	 * db.find({completed: true}, data => {
-	 *	 // data shall contain items whose completed properties are true
-	 * })
-	 */
+   * Find items with properties matching those on query.
+   *
+   * @param {ItemQuery} query Query to match
+   * @param {function(ItemList)} callback Called when the query is done
+   *
+   * @example
+   * db.find({completed: true}, data => {
+   *  // data shall contain items whose completed properties are true
+   * })
+   */
   find(query, callback) {
     const todos = this.getLocalStorage();
     let k;
@@ -65,13 +71,15 @@ export default class Store {
   }
 
   /**
-	 * Update an item in the Store.
-	 *
-	 * @param {ItemUpdate} update Record with an id and a property to update
-	 * @param {function()} [callback] Called when partialRecord is applied
-	 */
+   * Update an item in the Store.
+   *
+   * @param {ItemUpdate} update Record with an id and a property to update
+   * @param {function()} [callback] Called when partialRecord is applied
+   */
   update(update, callback) {
-    const { id } = update;
+    const {
+      id,
+    } = update;
     const todos = this.getLocalStorage();
     let i = todos.length;
     let k;
@@ -93,11 +101,11 @@ export default class Store {
   }
 
   /**
-	 * Insert an item into the Store.
-	 *
-	 * @param {Item} item Item to insert
-	 * @param {function()} [callback] Called when item is inserted
-	 */
+   * Insert an item into the Store.
+   *
+   * @param {Item} item Item to insert
+   * @param {function()} [callback] Called when item is inserted
+   */
   insert(item, callback) {
     const todos = this.getLocalStorage();
     todos.push(item);
@@ -109,11 +117,11 @@ export default class Store {
   }
 
   /**
-	 * Remove items from the Store based on a query.
-	 *
-	 * @param {ItemQuery} query Query matching the items to remove
-	 * @param {function(ItemList)|function()} [callback] Called when records matching query are removed
-	 */
+   * Remove items from the Store based on a query.
+   *
+   * @param {ItemQuery} query Query matching the items to remove
+   * @param {function(ItemList)|function()} [callback] Called when records matching query are removed
+   */
   remove(query, callback) {
     let k;
 
@@ -134,10 +142,10 @@ export default class Store {
   }
 
   /**
-	 * Count total, active, and completed todos.
-	 *
-	 * @param {function(number, number, number)} callback Called when the count is completed
-	 */
+   * Count total, active, and completed todos.
+   *
+   * @param {function(number, number, number)} callback Called when the count is completed
+   */
   count(callback) {
     this.find(emptyItemQuery, (data) => {
       const total = data.length;
