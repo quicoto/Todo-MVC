@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "> Vue.js is a library for building interactive web interfaces. It provides data-driven, nestable view components with a simple and flexible API.",
   "scripts": {
-    "build": "run-s css:* js",
+    "build": "run-s css:* js copy",
+    "copy": "copyfiles index.html dist",
     "js": "webpack",
     "css:precompile": "node-sass --omitSourceMapUrl true ./src/style.scss ./dist/style.css",
     "css:minify": "cleancss -o ./dist/style.css ./dist/style.css",
@@ -24,6 +25,7 @@
   "dependencies": {
     "browser-sync": "^2.26.14",
     "clean-css-cli": "^4.3.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^7.19.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
