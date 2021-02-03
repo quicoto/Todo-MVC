@@ -17,25 +17,27 @@ export default class Template {
     let output = '';
     let dayOfTheWeek = 0;
 
-    items.forEach((item) => {
-      let dayHeading = '';
-      const itemDay = new Date(item.date).getDay();
+    items.sort((a, b) => ((a.color > b.color) ? 1 : -1))
+      .forEach((item) => {
+        let dayHeading = '';
+        const itemDay = new Date(item.date).getDay();
 
-      if (dayOfTheWeek !== itemDay) {
-        dayHeading = `<time>${new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(new Date(item.date))}</time>`;
-        dayOfTheWeek = itemDay;
-      }
+        if (dayOfTheWeek !== itemDay) {
+          dayHeading = `<time>${new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(new Date(item.date))}</time>`;
+          dayOfTheWeek = itemDay;
+        }
 
-      output
+        output += `<li>${dayHeading}</li>`;
+
+        output
       += `<li data-id="${item.id}"${item.completed ? ' class="completed"' : ''}>
-        ${dayHeading}
         <div class="view">
           <input class="toggle" type="checkbox" ${item.completed ? 'checked' : ''}>
           <label>${escapeForHTML(item.title)}</label>
           <button class="destroy"></button>
         </div>
       </li>`;
-    });
+      });
 
     return output;
   }
