@@ -12,7 +12,7 @@
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="msapplication-config" content="assets/browserconfig.xml">
 		<meta name="theme-color" content="#27ae60">
-		<link rel="stylesheet" href="style.css?ver=1.1.1">
+		<link rel="stylesheet" href="style.css?ver=1.1.2">
 	</head>
 	<body>
 		<section class="todoapp">
@@ -21,6 +21,8 @@
 				<input class="new-todo" placeholder="What needs to be done?" autofocus>
 			</header>
 			<section style="display:none" class="main">
+				<input id="toggle-all" class="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
 				<ul class="todo-list"></ul>
 				<footer class="footer">
 					<span class="todo-count"></span>
@@ -43,6 +45,6 @@
 			<p>With ❤️ from <a href="https://ricard.blog">Ricard Torres</a></p>
 			<p>Forked from <a href="http://todomvc.com">TodoMVC</a></p>
 		</footer>
-		<script src="bundle.js?ver=1.1.1"></script>
+		<script src="bundle.js?ver=1.1.2"></script>
 	</body>
 </html>
